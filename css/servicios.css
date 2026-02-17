@@ -78,9 +78,9 @@
   font-weight: 300;
   cursor: pointer;
 
-  color: #111;              /* 🔥 fuerza color negro */
-  text-align: left;         /* evita centrado raro */
-  outline: none;            /* elimina borde azul focus */
+  color: #111;            
+  text-align: left;        
+  outline: none;            
 }
 
 .servicio-header:hover {

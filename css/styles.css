@@ -235,14 +235,14 @@ h1, h2 {
   font-weight: 300;
   letter-spacing: -0.02em;
   opacity: 0.11;
-  display: block;      /* para que quede arriba */
-  margin-bottom: -6px; /* espacio hacia los apellidos */
+  display: block;     
+  margin-bottom: -6px; 
 }
 
 .last-names {
-  display: inline-flex; /* Volponi y Rubio en la misma línea */
-  gap: 10px;            /* separación entre apellidos */
-  flex-wrap: nowrap;     /* evita que se rompa la línea */
+  display: inline-flex; 
+  gap: 10px;          
+  flex-wrap: nowrap;    
 }
 
 .last-name {
@@ -250,7 +250,7 @@ h1, h2 {
   font-size: clamp(90px, 9vw, 140px);
   font-weight: 200;
   letter-spacing: -0.01em;
-  display: inline-flex; /* mantiene los apellidos juntos */
+  display: inline-flex; 
 }
 .last-names .last-name:last-child {
   margin-left: 20px; 
@@ -286,11 +286,11 @@ h1, h2 {
 
 .whatsapp-float {
   position: fixed;           
-  bottom: 40px;             /* se separa del borde inferior */
-  right: 40px;              /* se separa del borde derecho */
+  bottom: 40px;            
+  right: 40px;              
   width: 60px;
   height: 60px;
-  background-color: #555;    /* color gris */
+  background-color: #555;    
   color: white;
   border-radius: 50%;        
   display: flex;
@@ -322,9 +322,9 @@ h1, h2 {
 
   /* ---------- TYPO / SECTIONS  ---------- */
 .hero-home-content {
-    left: 0;              /* alineado a la izquierda */
-    padding-left: 6%;      /* espacio para que no se corte en pantallas chicas */
-    max-width: 100%;       /* que no se salga del ancho de la pantalla */
+    left: 0;              
+    padding-left: 6%;      
+    max-width: 100%;      
     box-sizing: border-box;
   }
 
@@ -339,13 +339,13 @@ h1, h2 {
     font-family: 'Inter', sans-serif;
     font-weight: 300;
     letter-spacing: 0;
-    font-size: clamp(50px, 10vw, 80px); /* grande y responsive */
+    font-size: clamp(50px, 10vw, 80px);
     opacity: 0.11;
     margin-bottom: 8px;
   }
 
   .last-names {
-    display: inline-flex;  /* Volponi y Rubio en la misma línea */
+    display: inline-flex;  
     flex-wrap: wrap;
     gap: 15px;
   }
@@ -353,14 +353,14 @@ h1, h2 {
   .last-name {
     font-family: 'Inter', sans-serif;
     font-weight: 300;
-    font-size: clamp(60px, 12vw, 90px); /* tamaño grande */
+    font-size: clamp(60px, 12vw, 90px); 
     opacity: 1;
     margin: 0;
   }
 
   .last-names .last-name:last-child {
     opacity: 0.6;
-    margin-left: 0;  /* Rubio más transparente */
+    margin-left: 0;  
   }
   .section-header h3 {
     font-size: 24px;
@@ -390,7 +390,7 @@ h1, h2 {
       height: 75vh;
     }
   .hero-slider .slide {
-    transform: scale(1); /* elimina zoom */
+    transform: scale(1); 
     object-fit: contain;
   }
     .hero-slider .slide img {
@@ -426,9 +426,9 @@ h1, h2 {
 /* Ajuste para mobile */
 @media (max-width: 768px) {
   .whatsapp-float {
-    bottom: 15px;  /* más cerca del borde inferior */
-    right: 15px;   /* más cerca del borde derecho */
-    width: 55px;   /* opcional: un poco más pequeño */
+    bottom: 15px; 
+    right: 15px;   
+    width: 55px;   
     height: 55px;
     font-size: 28px;
   }

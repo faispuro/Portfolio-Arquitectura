@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Ocultar solo si baja y el menú no está abierto
+    // Oculta solo si baja y el menú no está abierto
     if (
       currentScroll > lastScroll &&
       currentScroll > 100 &&
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
       header.classList.remove("hide"); // asegura que se vea
     });
 
-    // Cerrar menú al hacer click en link
+    // Cerrar menu al hacer click en link
     navLinks.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => {
         toggle.classList.remove("active");
