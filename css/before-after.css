@@ -391,7 +391,7 @@
 
 }
   .ba-divider {
-    z-index: 15; /* importante */
+    z-index: 15; 
   }
 
 @media (min-width: 769px) {
