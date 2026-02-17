@@ -1,0 +1,133 @@
+/* ================================
+   TESTIMONIOS
+================================ */
+
+.testimonios {
+  background: #e6e7e4;
+  padding: 160px 8%;
+  color: #111;
+}
+
+/* HEADER */
+
+.testimonios-header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 100px;
+}
+
+.testimonios-eyebrow {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 16px;
+}
+
+.testimonios-header h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+
+/* GRID */
+
+.testimonios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+
+/* CARD */
+
+.testimonial-card {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 20px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,0,0,0.3);
+}
+
+
+/* TEXTO */
+
+.testimonial-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  opacity: 0.8;
+  margin-bottom: 48px;
+}
+
+
+/* AUTHOR */
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.testimonial-author img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-author strong {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+
+.testimonial-author span {
+  font-size: 12px;
+  opacity: 0.6;
+}
+/* Animación de aparición */
+.testimonial-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.testimonial-card.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Animación de aparición para el header */
+.testimonios-header {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.testimonios-header.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1100px) {
+  .testimonios-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .testimonios-header h2 {
+    font-size: 40px;
+  }
+}

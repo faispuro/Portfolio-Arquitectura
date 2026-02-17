@@ -1,0 +1,186 @@
+/* ================================
+   ABOUT / ESTUDIO
+================================ */
+
+.about-intro {
+  padding: 160px 8%;
+  background: #f2f3f1;
+  color: #111;
+}
+
+/* HEADER */
+
+.about-header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 100px;
+  font-size: 40px;
+}
+.about-title {
+  font-size: 35px;
+  font-weight: 350;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+
+.about-header .about-eyebrow {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 16px;
+}
+
+.about-header h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+/* GRID */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 80px;
+  align-items: center;
+
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* IMAGEN */
+
+.about-image img {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: saturate(0.85) contrast(1.05);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.12);
+}
+
+/* ================================
+   TEXTO — MEJOR ALINEACIÓN VISUAL
+================================ */
+
+.about-content {
+  max-width: 680px;
+}
+
+.about-content .about-eyebrow {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 18px;
+}
+
+.about-content h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 44px;
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 32px;
+  max-width: 500px;
+}
+
+.about-content p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #444;
+  font-weight: 300;
+  max-width: 680px;
+}
+
+.about-content p + p {
+  margin-top: 22px;
+}
+
+/* MÉTRICA */
+
+.about-metric {
+  margin-top: 48px;
+}
+
+.about-metric strong {
+  font-size: 64px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.about-metric span {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #777;
+  margin-top: 6px;
+}
+
+/* ---------- ANIMACIONES ON SCROLL ---------- */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-1 { transition-delay: .1s; }
+.delay-2 { transition-delay: .2s; }
+.delay-3 { transition-delay: .3s; }
+.delay-4 { transition-delay: .4s; }
+
+.about-image.fade-up {
+  transform: translateY(30px) scale(1.05);
+}
+
+.about-image.fade-up.show {
+  transform: translateY(0) scale(1);
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+
+  .about-header h2 {
+    font-size: 40px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    text-align: center;
+  }
+
+  .about-image img {
+    margin: 0 auto;
+  }
+
+  .about-content {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 16px; 
+  }
+
+  .about-content h2,
+  .about-content p {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .about-metric {
+    text-align: center;
+  }
+
+}
