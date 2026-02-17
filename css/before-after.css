@@ -146,29 +146,45 @@
   overflow: hidden;
 }
 
-/* SLIDER */
+/* =========================
+   SLIDER
+========================= */
 
 .ba-slider {
   position: absolute;
   inset: 0;
   width: 100%;
   background: none;
+
+  -webkit-appearance: none;  /* Safari */
   appearance: none;
+
   z-index: 10;
   cursor: ew-resize;
 }
 
-/* Thumb invisible */
+/* Ocultar completamente el thumb */
 
+/* Chrome / Safari */
 .ba-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
   appearance: none;
-  width: 44px;
-  height: 44px;
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: none;
 }
 
+/* Firefox */
 .ba-slider::-moz-range-thumb {
-  width: 44px;
-  height: 44px;
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: none;
+}
+
+/* Ocultar la línea gris en Firefox */
+.ba-slider::-moz-range-track {
   background: transparent;
   border: none;
 }
@@ -186,6 +202,21 @@
   pointer-events: none;
 }
 
+/* Indicador de movimiento */
+.ba-divider::after {
+  content: "↔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  color: #fff;
+  background: rgba(0,0,0,.55);
+  padding: 6px 10px;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
 /* LABELS */
 
 .ba-label {
@@ -298,15 +329,6 @@
   opacity: 1;
 }
 
-/* Flechas */
-
-/* =========================
-   FLECHAS MODERNAS
-========================= */
-
-/* =========================
-   FLECHAS MINIMAL NEGRAS
-========================= */
 
 /* =========================
    FLECHAS NEGRAS MODERNAS
@@ -354,5 +376,22 @@
 
   .ba-wrapper {
     aspect-ratio: 16 / 11;
+  }
+  .ba-divider {
+    z-index: 15; /* importante */
+  }
+
+  .ba-divider::after {
+    content: "↔";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: #fff;
+    background: rgba(0,0,0,.6);
+    padding: 6px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
   }
 }

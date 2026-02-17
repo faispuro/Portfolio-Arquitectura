@@ -77,7 +77,10 @@
   font-size: 28px;
   font-weight: 300;
   cursor: pointer;
-  transition: opacity 0.3s ease;
+
+  color: #111;              /* 🔥 fuerza color negro */
+  text-align: left;         /* evita centrado raro */
+  outline: none;            /* elimina borde azul focus */
 }
 
 .servicio-header:hover {
@@ -169,6 +172,7 @@
 
   .servicio-header {
     font-size: 26px;
+    -webkit-tap-highlight-color: transparent;
   }
 
 }

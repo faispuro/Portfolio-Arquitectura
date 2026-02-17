@@ -346,7 +346,7 @@ h1, h2 {
 
   .last-names {
     display: inline-flex;  /* Volponi y Rubio en la misma línea */
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 15px;
   }
 
