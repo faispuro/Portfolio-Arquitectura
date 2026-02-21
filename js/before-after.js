@@ -6,41 +6,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.ba-wrapper').forEach(wrapper => {
 
-    /* ===== BEFORE / AFTER (pointer events: mobile + desktop) ===== */
+    /* ===== BEFORE / AFTER ===== */
 
     const slider = wrapper.querySelector('.ba-slider');
+    if (!slider) return;
 
-    if (slider) {
+    const before = wrapper.querySelector('.ba-before');
+    const divider = wrapper.querySelector('.ba-divider');
 
-      const before = wrapper.querySelector('.ba-before');
-      const divider = wrapper.querySelector('.ba-divider');
+    const update = (value) => {
+      before.style.width = `calc(${value}% + 1px)`;
+      if (divider) divider.style.left = value + '%';
+      slider.value = value;
+    };
 
-      const update = (clientX) => {
-        const rect = wrapper.getBoundingClientRect();
-        let percent = ((clientX - rect.left) / rect.width) * 100;
-        percent = Math.max(0, Math.min(100, percent));
+    // valor inicial
+    update(slider.value);
 
-        before.style.width = `calc(${percent}% + 1px)`;
-        if (divider) divider.style.left = percent + '%';
-        slider.value = percent;
-      };
+    // funciona en desktop + mobile
+    slider.addEventListener('input', (e) => {
+      update(e.target.value);
+    });
 
-      let isDragging = false;
-
-      wrapper.addEventListener("pointerdown", (e) => {
-        isDragging = true;
-        update(e.clientX);
-      });
-
-      window.addEventListener("pointerup", () => {
-        isDragging = false;
-      });
-
-      window.addEventListener("pointermove", (e) => {
-        if (!isDragging) return;
-        update(e.clientX);
-      });
-    }
 
     /* ===== CARRUSEL ===== */
 
@@ -73,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Animación inicial
+    // animación inicial
     wrapper.classList.add('fade-in-init');
   });
 
