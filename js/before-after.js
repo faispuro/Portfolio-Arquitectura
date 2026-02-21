@@ -9,24 +9,24 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ===== BEFORE / AFTER ===== */
 
     const slider = wrapper.querySelector('.ba-slider');
-    if (!slider) return;
-
     const before = wrapper.querySelector('.ba-before');
     const divider = wrapper.querySelector('.ba-divider');
 
-    const update = (value) => {
-      before.style.width = `calc(${value}% + 1px)`;
-      if (divider) divider.style.left = value + '%';
-      slider.value = value;
-    };
+    if (slider && before) {
 
-    // valor inicial
-    update(slider.value);
+      const update = (value) => {
+        before.style.width = `calc(${value}% + 1px)`;
+        if (divider) divider.style.left = value + '%';
+        slider.value = value;
+      };
 
-    // funciona en desktop + mobile
-    slider.addEventListener('input', (e) => {
-      update(e.target.value);
-    });
+      update(slider.value);
+
+      // funciona en desktop + mobile
+      slider.addEventListener('input', (e) => {
+        update(e.target.value);
+      });
+    }
 
 
     /* ===== CARRUSEL ===== */
@@ -44,6 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
         images.forEach(img => img.classList.remove('active'));
         images[i].classList.add('active');
       }
+
+      showImage(index);
 
       if (nextBtn) {
         nextBtn.addEventListener('click', () => {
