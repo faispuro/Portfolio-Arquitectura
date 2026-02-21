@@ -390,6 +390,7 @@
 }
   .ba-divider {
     z-index: 15; 
+    touch-action: none; 
   }
 
 @media (min-width: 769px) {

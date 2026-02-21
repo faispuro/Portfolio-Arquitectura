@@ -31,9 +31,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (divider) {
 
-        // DESKTOP
-        divider.addEventListener('mousedown', () => isDragging = true);
-        window.addEventListener('mouseup', () => isDragging = false);
+        /* ===== DESKTOP ===== */
+        divider.addEventListener('mousedown', () => {
+          isDragging = true;
+        });
+
+        window.addEventListener('mouseup', () => {
+          isDragging = false;
+        });
 
         window.addEventListener('mousemove', (e) => {
           if (!isDragging) return;
@@ -44,17 +49,17 @@ document.addEventListener('DOMContentLoaded', () => {
           update(percent);
         });
 
-        // MOBILE
+        /* ===== MOBILE ===== */
         divider.addEventListener('touchstart', (e) => {
           isDragging = true;
           e.preventDefault();
-        });
+        }, { passive: false });
 
-        window.addEventListener('touchend', () => {
+        divider.addEventListener('touchend', () => {
           isDragging = false;
         });
 
-        window.addEventListener('touchmove', (e) => {
+        divider.addEventListener('touchmove', (e) => {
           if (!isDragging) return;
 
           e.preventDefault();
@@ -66,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
           percent = Math.max(0, Math.min(100, percent));
 
           update(percent);
+
         }, { passive: false });
 
         divider.addEventListener('mouseenter', () => divider.classList.add('active'));
@@ -104,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Animación de entrada
+    // Animación inicial
     wrapper.classList.add('fade-in-init');
   });
 
