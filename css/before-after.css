@@ -105,6 +105,7 @@
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #000;
+  touch-action: none; /* importante para evitar problemas en mobile al arrastrar el slider */
 }
 /* Animación de entrada de wrapper */
 .ba-wrapper.fade-in-init {
@@ -154,13 +155,14 @@
   position: absolute;
   inset: 0;
   width: 100%;
-  background: none;
-
-  -webkit-appearance: none;  /* Safari */
+  height: 100%;              
+  background: transparent;
+  -webkit-appearance: none;
   appearance: none;
-
-  z-index: 10;
+  z-index: 30;               
   cursor: ew-resize;
+  touch-action: none;
+  pointer-events: auto;     
 }
 
 /* Ocultar completamente el thumb */
@@ -388,10 +390,6 @@
   }
 
 }
-  .ba-divider {
-    z-index: 15; 
-    touch-action: none; 
-  }
 
 @media (min-width: 769px) {
   .ba-divider::after {

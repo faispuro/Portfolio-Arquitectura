@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.ba-wrapper').forEach(wrapper => {
 
-    /* ===== BEFORE / AFTER ===== */
+    /* ===== BEFORE / AFTER (pointer events: mobile + desktop) ===== */
 
     const slider = wrapper.querySelector('.ba-slider');
 
@@ -15,68 +15,31 @@ document.addEventListener('DOMContentLoaded', () => {
       const before = wrapper.querySelector('.ba-before');
       const divider = wrapper.querySelector('.ba-divider');
 
-      const update = (value) => {
-        before.style.width = `calc(${value}% + 1px)`;
-        if (divider) divider.style.left = value + '%';
-        slider.value = value;
+      const update = (clientX) => {
+        const rect = wrapper.getBoundingClientRect();
+        let percent = ((clientX - rect.left) / rect.width) * 100;
+        percent = Math.max(0, Math.min(100, percent));
+
+        before.style.width = `calc(${percent}% + 1px)`;
+        if (divider) divider.style.left = percent + '%';
+        slider.value = percent;
       };
-
-      update(slider.value);
-
-      slider.addEventListener('input', (e) => {
-        update(e.target.value);
-      });
 
       let isDragging = false;
 
-      if (divider) {
+      wrapper.addEventListener("pointerdown", (e) => {
+        isDragging = true;
+        update(e.clientX);
+      });
 
-        /* ===== DESKTOP ===== */
-        divider.addEventListener('mousedown', () => {
-          isDragging = true;
-        });
+      window.addEventListener("pointerup", () => {
+        isDragging = false;
+      });
 
-        window.addEventListener('mouseup', () => {
-          isDragging = false;
-        });
-
-        window.addEventListener('mousemove', (e) => {
-          if (!isDragging) return;
-
-          const rect = wrapper.getBoundingClientRect();
-          let percent = ((e.clientX - rect.left) / rect.width) * 100;
-          percent = Math.max(0, Math.min(100, percent));
-          update(percent);
-        });
-
-        /* ===== MOBILE ===== */
-        divider.addEventListener('touchstart', (e) => {
-          isDragging = true;
-          e.preventDefault();
-        }, { passive: false });
-
-        divider.addEventListener('touchend', () => {
-          isDragging = false;
-        });
-
-        divider.addEventListener('touchmove', (e) => {
-          if (!isDragging) return;
-
-          e.preventDefault();
-
-          const rect = wrapper.getBoundingClientRect();
-          const touchX = e.touches[0].clientX;
-
-          let percent = ((touchX - rect.left) / rect.width) * 100;
-          percent = Math.max(0, Math.min(100, percent));
-
-          update(percent);
-
-        }, { passive: false });
-
-        divider.addEventListener('mouseenter', () => divider.classList.add('active'));
-        divider.addEventListener('mouseleave', () => divider.classList.remove('active'));
-      }
+      window.addEventListener("pointermove", (e) => {
+        if (!isDragging) return;
+        update(e.clientX);
+      });
     }
 
     /* ===== CARRUSEL ===== */
