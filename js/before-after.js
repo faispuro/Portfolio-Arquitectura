@@ -31,28 +31,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (divider) {
 
-        divider.addEventListener('mousedown', () => { isDragging = true; });
-        window.addEventListener('mouseup', () => { isDragging = false; });
+        // DESKTOP
+        divider.addEventListener('mousedown', () => isDragging = true);
+        window.addEventListener('mouseup', () => isDragging = false);
 
         window.addEventListener('mousemove', (e) => {
           if (!isDragging) return;
+
           const rect = wrapper.getBoundingClientRect();
           let percent = ((e.clientX - rect.left) / rect.width) * 100;
           percent = Math.max(0, Math.min(100, percent));
           update(percent);
         });
 
-        divider.addEventListener('touchstart', () => { isDragging = true; });
-        window.addEventListener('touchend', () => { isDragging = false; });
+        // MOBILE
+        divider.addEventListener('touchstart', (e) => {
+          isDragging = true;
+          e.preventDefault();
+        });
+
+        window.addEventListener('touchend', () => {
+          isDragging = false;
+        });
 
         window.addEventListener('touchmove', (e) => {
           if (!isDragging) return;
+
+          e.preventDefault();
+
           const rect = wrapper.getBoundingClientRect();
-          let touchX = e.touches[0].clientX;
+          const touchX = e.touches[0].clientX;
+
           let percent = ((touchX - rect.left) / rect.width) * 100;
           percent = Math.max(0, Math.min(100, percent));
+
           update(percent);
-        });
+        }, { passive: false });
 
         divider.addEventListener('mouseenter', () => divider.classList.add('active'));
         divider.addEventListener('mouseleave', () => divider.classList.remove('active'));
