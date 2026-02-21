@@ -38,6 +38,7 @@ h1, h2 {
   position: relative;
   width: 100%;
   min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
 }
 
@@ -92,7 +93,7 @@ h1, h2 {
 .hero-home-content {
   position: absolute;
   left: 20px;
-  bottom: 4%;
+  bottom: 24px;
   z-index: 2;
   max-width: 640px;
 }
@@ -386,9 +387,6 @@ h1, h2 {
     padding: 80px 4%;
   }
 
-  .hero-projects {
-      height: 75vh;
-    }
   .hero-slider .slide {
     transform: scale(1); 
     object-fit: contain;
