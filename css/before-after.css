@@ -145,6 +145,7 @@
   inset: 0;
   width: 50%;
   overflow: hidden;
+  pointer-events: none;
 }
 
 /* =========================
@@ -386,7 +387,7 @@
   }
 
   .ba-wrapper {
-    aspect-ratio: 16 / 11;
+    aspect-ratio:16 / 9;
   }
 
 }
@@ -395,4 +396,9 @@
   .ba-divider::after {
     display: none;
   }
+  
 }
+  .ba-image,
+  .ba-carousel-image {
+    object-position: 50% 50%;
+  }
