@@ -22,10 +22,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
       update(slider.value);
 
-      // funciona en desktop + mobile
+      let isDragging = false;
+      let startX = 0;
+      let startY = 0;
+
+      // Desktop
       slider.addEventListener('input', (e) => {
         update(e.target.value);
       });
+
+      // Touch start
+      slider.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      });
+
+      // Touch end
+      slider.addEventListener('touchend', () => {
+        isDragging = false;
+      });
+
+      // Touch move (mobile)
+      slider.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+
+        const touch = e.touches[0];
+        const dx = Math.abs(touch.clientX - startX);
+        const dy = Math.abs(touch.clientY - startY);
+
+        // Solo si el gesto es horizontal
+        if (dx > dy) {
+          const rect = wrapper.getBoundingClientRect();
+
+          let x = touch.clientX - rect.left;
+          let percent = (x / rect.width) * 100;
+          percent = Math.max(0, Math.min(100, percent));
+
+          update(percent);
+
+          e.preventDefault();
+        }
+      }, { passive: false });
     }
 
 

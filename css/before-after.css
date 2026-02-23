@@ -105,7 +105,7 @@
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #000;
-  touch-action: none; /* importante para evitar problemas en mobile al arrastrar el slider */
+  touch-action: pan-y; /* importante para evitar problemas en mobile al arrastrar el slider */
 }
 /* Animación de entrada de wrapper */
 .ba-wrapper.fade-in-init {
@@ -161,7 +161,7 @@
   appearance: none;
   z-index: 30;               
   cursor: ew-resize;
-  touch-action: none;
+  touch-action: pan-y;
   pointer-events: auto;     
 }
 
