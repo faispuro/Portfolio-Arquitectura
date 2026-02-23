@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.ba-wrapper').forEach(wrapper => {
 
-    /* ===== BEFORE / AFTER ===== */
-
     const slider = wrapper.querySelector('.ba-slider');
     const before = wrapper.querySelector('.ba-before');
     const divider = wrapper.querySelector('.ba-divider');
@@ -22,50 +20,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
       update(slider.value);
 
-      let isDragging = false;
-      let startX = 0;
-      let startY = 0;
-
-      // Desktop
+      // Desktop + mobile input
       slider.addEventListener('input', (e) => {
         update(e.target.value);
       });
 
-      // Touch start
-      slider.addEventListener('touchstart', (e) => {
-        isDragging = true;
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-      });
-
-      // Touch end
-      slider.addEventListener('touchend', () => {
-        isDragging = false;
-      });
-
-      // Touch move (mobile)
-      slider.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-
+      // Touch move (mobile) limpio
+      slider.addEventListener("touchmove", (e) => {
         const touch = e.touches[0];
-        const dx = Math.abs(touch.clientX - startX);
-        const dy = Math.abs(touch.clientY - startY);
+        const rect = wrapper.getBoundingClientRect();
 
-        // Solo si el gesto es horizontal
-        if (dx > dy) {
-          const rect = wrapper.getBoundingClientRect();
+        let x = touch.clientX - rect.left;
+        let percent = (x / rect.width) * 100;
+        percent = Math.max(0, Math.min(100, percent));
 
-          let x = touch.clientX - rect.left;
-          let percent = (x / rect.width) * 100;
-          percent = Math.max(0, Math.min(100, percent));
-
-          update(percent);
-
-          e.preventDefault();
-        }
-      }, { passive: false });
+        update(percent);
+      }, { passive: true });
     }
-
 
     /* ===== CARRUSEL ===== */
 
@@ -100,10 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // animación inicial
     wrapper.classList.add('fade-in-init');
   });
-
 
   /* ===============================
      BOTÓN VER MÁS / MENOS
@@ -120,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-
   /* ===============================
      INTERSECTION OBSERVER
   =============================== */
@@ -134,9 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.2
-  });
+  }, { threshold: 0.2 });
 
   elements.forEach(el => observer.observe(el));
 

@@ -161,7 +161,7 @@
   appearance: none;
   z-index: 30;               
   cursor: ew-resize;
-  touch-action: pan-y;
+  touch-action: none;
   pointer-events: auto;     
 }
 
